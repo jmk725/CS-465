@@ -1,0 +1,160 @@
+<div class="container mt-4">
+  <div class="col-md-6">
+
+    <h2>Edit Trip</h2>
+
+    <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label">Code:</label>
+        <input
+          type="text"
+          formControlName="code"
+          class="form-control"
+          placeholder="Trip code"
+          [ngClass]="{ 'is-invalid': submitted && f['code'].errors }"
+        >
+
+        <div
+          *ngIf="submitted && f['code'].errors?.['required']"
+          class="invalid-feedback"
+        >
+          Trip code is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Name:</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          placeholder="Trip name"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        >
+
+        <div
+          *ngIf="submitted && f['name'].errors?.['required']"
+          class="invalid-feedback"
+        >
+          Trip name is required.
+        </div>
+      </div>
+      <div class="mb-3">
+  <label class="form-label">Length:</label>
+  <input
+    type="text"
+    formControlName="length"
+    class="form-control"
+    placeholder="4 nights / 5 days"
+    [ngClass]="{ 'is-invalid': submitted && f['length'].errors }"
+  >
+
+  <div
+    *ngIf="submitted && f['length'].errors?.['required']"
+    class="invalid-feedback"
+  >
+    Length is required.
+  </div>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Start Date:</label>
+  <input
+    type="date"
+    formControlName="start"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f['start'].errors }"
+  >
+
+  <div
+    *ngIf="submitted && f['start'].errors?.['required']"
+    class="invalid-feedback"
+  >
+    Start date is required.
+  </div>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Resort:</label>
+  <input
+    type="text"
+    formControlName="resort"
+    class="form-control"
+    placeholder="Resort"
+    [ngClass]="{ 'is-invalid': submitted && f['resort'].errors }"
+  >
+
+  <div
+    *ngIf="submitted && f['resort'].errors?.['required']"
+    class="invalid-feedback"
+  >
+    Resort is required.
+  </div>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Price Per Person:</label>
+  <input
+    type="text"
+    formControlName="perPerson"
+    class="form-control"
+    placeholder="799.00"
+    [ngClass]="{ 'is-invalid': submitted && f['perPerson'].errors }"
+  >
+
+  <div
+    *ngIf="submitted && f['perPerson'].errors?.['required']"
+    class="invalid-feedback"
+  >
+    Price is required.
+  </div>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Image:</label>
+  <input
+    type="text"
+    formControlName="image"
+    class="form-control"
+    placeholder="reef1.jpg"
+    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
+  >
+
+  <div
+    *ngIf="submitted && f['image'].errors?.['required']"
+    class="invalid-feedback"
+  >
+    Image name is required.
+  </div>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">Description:</label>
+  <textarea
+    formControlName="description"
+    class="form-control"
+    rows="4"
+    placeholder="Trip description"
+    [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+  ></textarea>
+
+  <div
+    *ngIf="submitted && f['description'].errors?.['required']"
+    class="invalid-feedback"
+  >
+    Description is required.
+  </div>
+</div>
+
+<button type="submit" class="btn btn-primary me-2">
+  Save
+</button>
+
+<button type="button" class="btn btn-secondary" routerLink="/">
+  Cancel
+</button>
+
+    </form>
+  </div>
+</div>
