@@ -7,10 +7,16 @@ var logger = require('morgan');
 // Connect to MongoDB
 require('./app_api/models/db');
 
+require('dotenv').config();
+
 // Website routes
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var travelRouter = require('./app_server/routes/travel');
+
+
+var passport = require('passport');
+require('./app_api/config/passport');
 
 // API routes
 var apiRouter = require('./app_api/routes/index');
@@ -26,6 +32,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app_server', 'public')));
+
+app.use(passport.initialize());
 
 // Allow Angular on port 4200 to access the API on port 3000
 app.use('/api', function(req, res, next) {
