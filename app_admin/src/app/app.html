@@ -1,3 +1,26 @@
-<h1>Travlr Getaways Admin</h1>
+<nav class="navbar navbar-expand navbar-light bg-light px-3 mb-3">
+  <a class="navbar-brand" routerLink="/">
+    Travlr Getaways Admin
+  </a>
+
+  <div class="ms-auto">
+    <a
+      *ngIf="!isLoggedIn()"
+      class="btn btn-outline-primary"
+      routerLink="/login"
+    >
+      Login
+    </a>
+
+    <button
+      *ngIf="isLoggedIn()"
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </div>
+</nav>
 
 <router-outlet></router-outlet>

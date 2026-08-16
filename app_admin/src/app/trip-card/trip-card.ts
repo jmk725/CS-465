@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TripData } from '../services/trip-data';
+import { Authentication } from '../services/authentication';
 
 @Component({
   selector: 'app-trip-card',
@@ -13,7 +14,14 @@ import { TripData } from '../services/trip-data';
 export class TripCard {
   @Input() trip: any;
 
-  constructor(private tripData: TripData) {}
+  constructor(
+    private tripData: TripData,
+    private authenticationService: Authentication
+  ) {}
+
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
+  }
 
   public deleteTrip(): void {
     const confirmed = window.confirm(
